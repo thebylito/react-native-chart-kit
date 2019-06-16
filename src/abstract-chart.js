@@ -80,7 +80,8 @@ class AbstractChart extends Component {
       height,
       paddingTop,
       paddingRight,
-      yLabelsOffset = 12
+      yLabelsOffset = 12,
+      customRenderY,
     } = config
     const decimalPlaces = this.props.chartConfig.decimalPlaces === undefined ? 2 : this.props.chartConfig.decimalPlaces
     const yAxisLabel = this.props.yAxisLabel || ''
@@ -104,9 +105,9 @@ class AbstractChart extends Component {
           textAnchor="end"
           y={(height * 3) / 4 - ((height - paddingTop) / count) * i + 12}
           fontSize={12}
-          fill={this.props.chartConfig.color(0.5)}
+          fill={this.props.chartConfig.color(1)}
         >
-          {yLabel}
+          {customRenderY(yLabel)}
         </Text>
       )
     })
